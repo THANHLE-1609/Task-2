@@ -1,0 +1,293 @@
+#include "TASK2.h"
+#include "math.h"
+#include <string>
+using namespace std;
+// ========== CAU 1 ==========
+string decToBin(int n)
+{
+    if (n == 0) return "0";
+
+    string s = "";
+    while (n > 0) {
+        s = char('0' + n % 2) + s;
+        n /= 2;
+    }
+    return s;
+}
+
+
+// ========== CAU 2 ==========
+int fibonacci(int n)
+{
+    if(n==0) return 0;
+    else if(n==1) return 1;
+    else return fibonacci(n-1) + fibonacci(n-2);
+   
+}
+
+// ========== CAU 3 ==========
+bool LeapYear(int year){
+    if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+        return true;
+    return false;
+} 
+bool day30(int month){
+    if(month == 4 || month == 6 || month == 9 || month == 11)
+        return true;
+    return false;
+}
+void printPrevNextDay(int d, int m, int y)
+{
+    int prev_d, prev_m, prev_y;
+    int next_d, next_m, next_y;
+    if(m==2)
+    {if(LeapYear(y)){
+        if(d==29){
+            next_d=1; next_m=3; next_y=y;
+            prev_d=28; prev_m=2; prev_y=y;
+        }
+        else if(d==1){
+            next_d=2; next_m=2; next_y=y;
+            prev_d=31; prev_m=1; prev_y=y;
+        }
+        else{
+            next_d=d+1; next_m=m; next_y=y;
+            prev_d=d-1; prev_m=m; prev_y=y;
+        }
+    }
+else {
+    if(d==28){
+        next_d=1; next_m=3; next_y=y;
+        prev_d=27; prev_m=2; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=2; next_y=y;
+        prev_d=31; prev_m=1; prev_y=y;
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+}
+if(day30(m)){
+    if(d==30){
+        next_d=1; next_m=m+1; next_y=y;
+        prev_d=29; prev_m=m; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=m; next_y=y;
+        prev_d=31; prev_m=m-1; prev_y=y;
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+
+if(m==1){
+    if(d==31){
+        next_d=1; next_m=m+1; next_y=y;
+        prev_d=30; prev_m=m; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=m; next_y=y;
+        prev_d=31; prev_m=12; prev_y=y-1;
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+if(m==3){
+    if(d==31){
+        next_d=1; next_m=m+1; next_y=y;
+        prev_d=30; prev_m=m; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=m; next_y=y;
+        if(LeapYear(y)){
+            prev_d=29; prev_m=2; prev_y=y;
+        }
+        else{
+            prev_d=28; prev_m=2; prev_y=y;
+        }
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+if(m==5||m==10||m==7){
+    if(d==31){
+        next_d=1; next_m=m+1; next_y=y;
+        prev_d=30; prev_m=m; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=m; next_y=y;
+        prev_d=30; prev_m=m-1; prev_y=y;
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+if(m==8){
+    if(d==31){
+        next_d=1; next_m=m+1; next_y=y;
+        prev_d=30; prev_m=m; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=m; next_y=y;
+        prev_d=31; prev_m=m-1; prev_y=y;
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+if(m==12){
+    if(d==31){
+        next_d=1; next_m=1; next_y=y+1;
+        prev_d=30; prev_m=m; prev_y=y;
+    }
+    else if(d==1){
+        next_d=2; next_m=m; next_y=y;
+        prev_d=30; prev_m=m-1; prev_y=y;
+    }
+    else{
+        next_d=d+1; next_m=m; next_y=y;
+        prev_d=d-1; prev_m=m; prev_y=y;
+    }
+}
+
+
+    cout << "Previous: " << prev_d << "/" << prev_m << "/" << prev_y << "\n";
+    cout << "Current : " << d << "/" << m << "/" << y << "\n";
+    cout << "Next    : " << next_d << "/" << next_m << "/" << next_y << "\n";
+}
+
+// ========== CAU 4 ==========
+int Day(int d, int m, int y){
+    int s=0;
+    if(m==1) s = d;
+    if(m==2) s = d + 31;
+    if(m==3) s = LeapYear(y) ? d + 60 : d + 59;
+    if(m==4) s = LeapYear(y) ? d + 91 : d + 90;
+    if(m==5) s = LeapYear(y) ? d + 121 : d + 120;
+    if(m==6) s = LeapYear(y) ? d + 152 : d + 151;
+    if(m==7) s = LeapYear(y) ? d + 182 : d + 181;
+    if(m==8) s = LeapYear(y) ? d + 213 : d + 212;
+    if(m==9) s = LeapYear(y) ? d + 244 : d + 243;
+    if(m==10) s = LeapYear(y) ? d + 274 : d + 273;
+    if(m==11) s = LeapYear(y) ? d + 305 : d + 304;
+    if(m==12) s = LeapYear(y) ? d + 335 : d + 334;
+return s;
+}
+int daysBetween(int d1, int m1, int y1, int d2, int m2, int y2)
+{ 
+    int a = -Day(d1,m1,y1);
+    int b = Day(d2,m2,y2);
+    int s = y2 - y1;
+    for (int i = 0; i <= s; i++){
+        if(i < s){
+            a += Day(31,12,y1 + i);
+        }
+        else{
+            a += b;
+        }
+    }
+    return a; // default
+}
+
+// ========== CAU 5 ==========
+int Number(int x){
+    int s=0;
+    while (x!=0){
+        x /=10;
+        s++;
+    }
+    return s;
+}
+bool isPalindrome(int x)
+{
+    if (x < 0) return false;
+    int n = Number(x);
+    int arr[n];
+    for(int i=0; i<n; i++){
+        arr[i] = x % 10;
+        x /= 10;
+    }
+    for(int i=0; i<n; i++){
+        if(arr[i] != arr[n-1-i]) return false;
+    }
+    return true;
+}
+
+// ========== CAU 6 ==========
+bool isPrime(int x){
+    if(x < 2) return false;
+    for(int i=2; i<=sqrt(x); i++){
+        if(x % i == 0) return false;
+    }
+    return true;
+}
+int nextPrime(int x)
+{
+   if(x < 2) return 2;
+   while(isPrime(x+1) != true){
+    x++;
+   }
+   return x+1;
+}
+
+// ========== CAU 7 ==========
+int prevFibonacci(int x)
+{
+    if(x < 0) return -1;
+    if(x==0) return 0;
+    int i=0;
+    while(fibonacci(i) <= x){
+        i++;
+    }
+    return fibonacci(i-1); // default
+}
+
+// ========== CAU 8 ==========
+int sumOfDigits(int n)
+{
+    int s=0;
+    while(n != 0){
+        s += n % 10;
+        n /= 10;
+    }
+    return s;
+}
+bool isSmith(int n)
+{
+    if(isPrime(n)) return false;
+    int a = sumOfDigits(n);
+    int b =0, c = n;
+    for(int i=2; i<=n; i++){
+        while(c % i == 0 && isPrime(i)){
+            b += sumOfDigits(i);
+            c /= i;
+        }
+    }
+if(a == b) return true;
+else
+    return false; // default
+}
+
+// ========== CAU 9 ==========
+int countTwinPrimes(int n)
+{
+    if (n<5) return 0;
+    int count=0;
+    for(int i=3; i<=n-2; i++){
+        if(isPrime(i) && isPrime(i+2)){
+            count++;
+        }
+    }
+    return count; // default
+}
